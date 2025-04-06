@@ -1,4 +1,4 @@
-<?php include 'config.php'; ?>
+<?php include '../config/config.php'; ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,12 +8,15 @@
     
     <!-- 부트스트랩 CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/cosmo/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
     <style>
-      .row {
-        margin-top: 0.5rem !important; /* mt-3와 동일한 효과 */
-        margin-bottom: 0.5rem !important;
+      .calendar .row {
+        margin-top: 0.3rem !important; /* mt-3와 동일한 효과 */
+        margin-bottom: 1.5rem !important;
+      }
+      .calendar i {
+        opacity: 0.7;
       }
       .col {
         min-width: 0;
@@ -27,17 +30,20 @@
         height: 12px;
         border-radius: 50%;
       }
+      a {
+        text-decoration: none;
+      }
     </style>
 </head>
 <body>
     <!-- 네비게이션 바 -->
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="/index.php"><i class="bi bi-calendar-week fs-3 p-2"></i>동방 예약 사이트</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
+    <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" href="#">Home

@@ -1,7 +1,6 @@
 <?php
 // 사이트 기본 설정
 define('SITE_NAME', '바로크 동방 예약');
-define('BASE_URL', 'http://localhost/index.php');
 
 // 데이터베이스 연결
 $host = 'localhost';
