@@ -1,4 +1,5 @@
-<?php include '../includes/header.php'; ?>
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/nav.php'; ?>
 <?php
 $now = isset($_GET['day']) ? $_GET['day'] : date('Y-m-d');
 $date = DateTime::createFromFormat('Y-m-d', $now);
@@ -75,7 +76,11 @@ $nextWeek = (clone $date)->modify('7 days')->format('Y-m-d');
                 echo "<div class='{$colClasses}'>";
                 echo "<span>{$week[$d->format('w')]}</span>";
 
-                echo "<a href='?day={$d->format('Y-m-d')}' class='{$btnClasses} day-move' data-date='{$d->format('Y-m-d')}'>{$d->format('j')}</a>";
+                $dayFormatted = $d->format('Y-m-d');
+                $dayNumber = $d->format('j');
+                
+                echo "<a href='/booking?day={$dayFormatted}' class='{$btnClasses} day-move' data-date='{$dayFormatted}'>{$dayNumber}</a>";
+
                 echo "</div>";
                 $d->modify("1 days");
             }
@@ -108,7 +113,8 @@ $nextWeek = (clone $date)->modify('7 days')->format('Y-m-d');
                         echo "예약 가능";
                     } else {
                         $randomColor = getColorClass($hourlySlots[$i]['songName']);
-                        echo "<div class='btn btn-{$randomColor} disabled col p-3 text-center shadow-sm'";
+                        echo "<div class='btn btn-{$randomColor} col p-3 text-center shadow-sm opacity-75'";
+                        echo "data-bs-toggle='modal' data-bs-target='#cancelModal'";
                         echo "data-time='{$formatted}'>";
                         echo $hourlySlots[$i]['songName'] . " ({$hourlySlots[$i]['userName']})";
                     }
@@ -122,19 +128,9 @@ $nextWeek = (clone $date)->modify('7 days')->format('Y-m-d');
         </div>
     </div>
 </div>
-<script>
-    document.querySelectorAll('.day-move').forEach(el => {
-        el.addEventListener('click', (e) => {
-            e.preventDefault(); // 기본 링크 이동 막기
 
-            const selectedDate = el.dataset.date;
-            history.replaceState(null, "", `/booking.php?day=${selectedDate}`);
+<?php include 'partials/booking_modal.php'; ?>
+<?php include 'partials/cancel_modal.php'; ?>
+<script src="../js/reserve-form.js"></script>
 
-            location.reload();
-        });
-    });
-
-</script>
-<?php include '../views/booking_modal.php'; ?>
-
-<?php include '../includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>

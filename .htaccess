@@ -1,6 +1,7 @@
 RewriteEngine On
 
-# 모든 요청을 public/index.php로 리다이렉트
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
+
+DirectoryIndex index.php

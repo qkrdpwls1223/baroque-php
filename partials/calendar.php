@@ -50,7 +50,7 @@
                 echo "<i class='bi bi-circle-fill align-middle {$reserve_state}'></i>";
                 echo "</div>";
                 echo "<div class='position-absolute z-2 text-white'>";
-                echo "<a class='d-block {$text_color} fs-6' href='booking.php?day={$date->format('Y-m-d')}'>{$date->format('j')}</a>";
+                echo "<a class='d-block {$text_color} fs-6' href='booking?day={$date->format('Y-m-d')}'>{$date->format('j')}</a>";
                 echo "</div>";
                 echo "</div>";
                     
