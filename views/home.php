@@ -1,5 +1,5 @@
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/nav.php'; ?>
+<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/nav.php'; ?>
 
 <?php
 $now = isset($_GET['month']) ? $_GET['month'] : date('Y-m');
@@ -23,5 +23,5 @@ $nextMonth = (clone $date)->modify('+1 month')->format('Y-m');
     </div>
   </div>
 </div>
-<?php include 'partials/calendar.php'; ?>
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../partials/calendar.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

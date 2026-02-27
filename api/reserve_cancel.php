@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'];
     $time = $_POST['time'];
 
-    $sql = "DELETE FROM schedule WHERE date = ? AND startTime = ?";
+    $sql = "DELETE FROM schedule WHERE date = ? AND time = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $date, $time);
     $stmt->execute();

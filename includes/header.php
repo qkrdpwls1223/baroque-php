@@ -1,4 +1,4 @@
-<?php include 'config/config.php'; ?>
+<?php include __DIR__ . '/../config/config.php'; ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>

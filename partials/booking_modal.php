@@ -14,7 +14,8 @@
             <label class="btn btn-outline-primary" for="radioPractice">합주</label>
             <input type="radio" class="btn-check" id="radioMentoring" autocomplete="off" value="1">
             <label class="btn btn-outline-primary disabled" for="radioMentoring">멘토링</label>
-        </div>
+          </div>
+          <small>멘토링 예약은 아직 사용할 수 없습니다.</small>
         <div class="d-none"><input name="date" class="form-control" id="selectedDate" type="text" value="<?= $date->format("Y-m-d") ?>"></div>
           <div>
               <fieldset>

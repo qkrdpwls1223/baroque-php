@@ -1,11 +1,11 @@
-<?php include 'includes/header.php'; ?>
-<?php include 'includes/nav.php'; ?>
+<?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/nav.php'; ?>
 <?php
 $now = isset($_GET['day']) ? $_GET['day'] : date('Y-m-d');
 $date = DateTime::createFromFormat('Y-m-d', $now);
 $formatted_date = $date->format('Y-m-d');
 
-$sql = "SELECT * FROM schedule WHERE date = ? ORDER BY startTime ASC";
+$sql = "SELECT * FROM schedule WHERE date = ? ORDER BY time ASC";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "s", $formatted_date);
 mysqli_stmt_execute($stmt);
@@ -14,7 +14,7 @@ $result = mysqli_stmt_get_result($stmt);
 $hourlySlots = array_fill(0, 24, []);
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $hour = (int)date('G', strtotime($row['startTime']));
+    $hour = (int)date('G', strtotime($row['time']));
     $hourlySlots[$hour] = $row;
 }
 
@@ -87,7 +87,7 @@ $nextWeek = (clone $date)->modify('7 days')->format('Y-m-d');
             ?>
         </div>
     </div>
-    <?php $week_kor = $week[$d->format('w')]; ?>
+    <?php $week_kor = $week[$date->format('w')]; ?>
     <h3 class="mb-4"><?= $date->format('m월 j일') . " ({$week_kor})" ?></h3>
     <div class="container">
         <div class="row">
@@ -129,8 +129,8 @@ $nextWeek = (clone $date)->modify('7 days')->format('Y-m-d');
     </div>
 </div>
 
-<?php include 'partials/booking_modal.php'; ?>
-<?php include 'partials/cancel_modal.php'; ?>
+<?php include __DIR__ . '/../partials/booking_modal.php'; ?>
+<?php include __DIR__ . '/../partials/cancel_modal.php'; ?>
 <script src="../js/reserve-form.js"></script>
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../includes/footer.php'; ?>

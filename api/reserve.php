@@ -1,4 +1,4 @@
-<?php include 'config/config.php'; ?>
+<?php include __DIR__ . '/../config/config.php'; ?>
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reserveName = $_POST['reserveName'];
     $userName = $_POST['userName'];
 
-    $sql = "SELECT count(*) FROM schedule WHERE date = ? AND startTime = ?";
+    $sql = "SELECT count(*) FROM schedule WHERE date = ? AND time = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "ss", $date, $time);
     mysqli_stmt_execute($stmt);
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($row = mysqli_fetch_array($result)) {
         if ($row[0] == 0) {
-            $sql = "INSERT INTO schedule (date, startTime, songName, userName) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO schedule (date, time, songName, userName) VALUES (?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "ssss", $date, $time, $reserveName, $userName); // 두 개의 문자열
             mysqli_stmt_execute($stmt);
